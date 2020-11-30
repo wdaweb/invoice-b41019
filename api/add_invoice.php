@@ -10,7 +10,7 @@
 
 // }
 include_once "../base.php";
-
+$_SESSION['err']=[];
 
 // $dsn="mysql:host=localhost;dbname=invoice;charset=utf8";
 // $pdo=new PDO ($dsn,'root','');
@@ -19,14 +19,20 @@ include_once "../base.php";
 echo "<pre>";
 print_r(array_keys($_POST));
 echo "</pre>";
+accept('number','發票號碼的欄位必填');
+save('invoices',$_POST);
+//$sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
+//echo $sql;
 
-$sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values ('".implode("','",$_POST)."')";
-
-echo $sql;
-$pdo->exec($sql);
 
 echo "新增完成";
 
-header("location:../index.php?do=invoice_list");
+if(empty($_SESSION['err'])){
+    $pdo->exec($sql);
+    header("location:../index.php?do=invoice_list");
+}else{
+    header("location:../index.php");
+}
+
 
 ?>

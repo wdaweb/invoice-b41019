@@ -1,45 +1,8 @@
 <?php
 
-$dsn="mysql:host=localhost;dbname=invoice;charset=utf8";
-$pdo=new PDO($dsn,'root','');
+include_once "base.php";
 
-date_default_timezone_set("Asia/Taipei");
-session_start();
-
-$awardStr=['頭' ,'二', '三' , '四' , '五' , '六'];
-
-function accept($field,$meg='此欄位不得為空'){
-    if(empty($_POST[$field])){
-        $_SESSION['err'][$field]['empty']=$meg;
-    }
-}
-
-function length($field,$min,$max,$meg="長度不足"){
-    if(strlen($_POST[$field])>$max || strlen($_POST[$field]) < $min){
-        $_SESSION['err'][$field]['len']=$meg;
-    }
-
-}
-
-function email($field,$meg='email格式錯誤'){
-    $email=$_POST[$field];
-    echo mb_strpos($email,'@');
-    if(mb_strpos($email,'@')==false){
-        $_SESSION['err'][$field]['email']=$meg;
-    }
-}
-
-function errFeedBack($field){
-    if(!empty($_SESSION['err'][$field])){
-
-        foreach($_SESSION['err'][$field] as $err){
-            echo "<div style='font-size:12px;color:red'>";
-            echo $err;
-            echo "</div>";
-        }
-    }
-}
-
+//取得單一資料的自訂函式
 function find($table,$id){
     global $pdo;
     $sql="select * from $table where ";
@@ -58,12 +21,13 @@ function find($table,$id){
     return $row;
 }
 
+
 function all($table,...$arg){
     global $pdo;
     $sql="select * from $table ";
 
     if(isset($arg[0])){
-
+    
         if(is_array($arg[0])){
             //製作會在 where 後面的句子字串(陣列格式)
                 foreach($arg[0] as $key => $value){
@@ -71,7 +35,7 @@ function all($table,...$arg){
                 }
 
                 $sql=$sql." where ".implode(' && ',$tmp);
-
+            
         }else{
             //製作非陣列的語句接在$sql後面
                 $sql=$sql.$arg[0];       
@@ -84,13 +48,14 @@ function all($table,...$arg){
     echo $sql."<br>";
     return $pdo->query($sql)->fetchAll(); 
 }
+
 function del($table,$id){
     global $pdo;
     $sql="delete from $table where ";
     if(is_array($id)){
         foreach($id as $key => $value){
             $tmp[]=sprintf("`%s`='%s'",$key,$value);
-
+            
         }
         $sql=$sql.implode(' && ',$tmp);
     }else{
@@ -101,6 +66,8 @@ function del($table,$id){
 
     return $row;
 }
+
+
 
 function update($table,$array){
     global $pdo;
@@ -114,7 +81,7 @@ function update($table,$array){
     }
     $sql=$sql.implode(",",$tmp) . " where `id`='{$array['id']}'";
     echo $sql;
-    $pdo->exec($sql);
+   // $pdo->exec($sql);
 }
 
 function insert($table,$array){
@@ -136,14 +103,37 @@ function save($table,$array){
         }
 
 }
+/* $row=find('invoices',22);
+echo "<pre>";
+print_r($row);
+echo "</pre><br>";
+//update invoices set `code`='AA',`payment`='1' where `id`='22';
+$row['code']='AA';
+$row['payment']=1;
+update('invoices',$row); */
 
-function to($url){
-    header("location:".$url);
-}
+$row="AAA";
+save('invoices',$row);
 
-function q($sql){
-    global $pdo;
- return $pdo->query($sql)->fetchAll();
-}
+/* $def=['code'=>'GD'];
+echo del('invoices',$def); */
+
+/* echo "<hr>";
+print_r(all('invoices'));
+echo "<hr>";
+print_r(all('invoices',['code'=>"GD",'period'=>6]));
+echo "<hr>";
+print_r(all('invoices',['code'=>"AB",'period'=>1])," order by date desc");
+echo "<hr>";
+print_r(all('invoices'," limit 5"));
+ */
+/* echo "<hr>";
+all('invoices');
+echo "<hr>";
+all('invoices',['code'=>"GD",'period'=>6]);
+echo "<hr>";
+all('invoices',['code'=>"AB",'period'=>1]," order by date desc");
+echo "<hr>";
+all('invoices'," limit 5"); */
+
 ?>
-

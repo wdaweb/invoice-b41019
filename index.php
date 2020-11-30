@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="col-8 d-flex justify-content-between p-3 mx-auto border">
+<div class="col-lg-8 col-md-12  d-flex flex-column p-3 mx-auto border">
     
     <?php
     
@@ -71,3 +71,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php $_SESSION['err']=[];?> 

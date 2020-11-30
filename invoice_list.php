@@ -1,17 +1,29 @@
 <?php
 include_once "base.php";
 
-$sql= "select * from `invoices` order by date";
+$period=ceil(date("m")/2);
+echo $period; 
+// $sql= "select * from `invoices` where period='$period' order by date desc";
 
 // order by date 由舊到新牌資料(電腦計秒由累積秒數少的排到秒數多的)
 // order by date desc 由心道舊排列(電腦計秒由累積秒數多的排到秒數少的)
-$rows=$pdo->query($sql)->fetchall();
+$rows=all('invoices',['period'=>$period],' order by date desc');
 
 foreach($rows as $row){
     // echo $row['code'].$row['number']."<br>";
 }
 
 ?>
+
+<div class='row justify-content-around' style="list-style-type:none;padding:0">
+    <li><a href="">1,2月</a></li>
+    <li><a href="">3,4月</a></li>
+    <li><a href="">5,6月</a></li>
+    <li><a href="">7,8月</a></li>
+    <li><a href="">9,10月</a></li>
+    <li><a href="">11,12月</a></li>
+
+</div>
 <table class="table text-center">
     <tr>
         <td>發票號碼</td>
@@ -33,6 +45,9 @@ foreach($rows as $row){
         </a></button>
         <button class="btn btn-sm btn-danger"><a class="text-light" href="?do=del_invoice&id=<?=$row['id'];?>">
         刪除
+        </a></button>
+        <button class="btn btn-sm btn-success"><a class="text-light" href="?do=award&id=<?=$row['id'];?>">
+        對獎
         </a></button>
 
         </td>
