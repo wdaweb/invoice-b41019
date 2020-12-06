@@ -72,13 +72,6 @@ foreach($invoices as $inv){
                 
                 
                 if($award['number']==$number){
-                    ?>
-
-        <!-- <img src="img/6.gif" class="rounded mx-auto d-block" alt=""> -->
-        <br>
-        <p style="text-align: center;color:red;font-weight:900;">
-        
-                <?php
                     echo "<br>號碼=".$number."<br>";
                     echo "<br>中了特別獎<br>";
                     $all_res=1;
@@ -87,14 +80,6 @@ foreach($invoices as $inv){
             case 2:
                 
                 if($award['number']==$number){
-                    ?>
-
-        <!-- <img src="img/3.gif" class="rounded mx-auto d-block" alt=""> -->
-        <br>
-        <!-- <p style="text-align: center;color:red;font-weight:900;"> -->
-
-
-                <?php
                     echo "<br>號碼=".$number."<br>";
                     echo "中了特獎<br>";
                     $all_res=1;
@@ -117,13 +102,6 @@ foreach($invoices as $inv){
                 }
                 //判斷最後中的獎項
                 if($res!=-1){
-                    ?>
-
-        <!-- <img src="img/2.gif" class="rounded mx-auto d-block" alt=""> -->
-        <br>
-        <p style="text-align: center;color:red;font-weight:900;">
-
-                <?php
                     echo "<br>號碼=".$number."<br>";
                     echo "中了{$awardStr[$res]}獎<br>";
                     $all_res=1;
@@ -131,13 +109,6 @@ foreach($invoices as $inv){
             break;
             case 4:
                 if($award['number']==mb_substr($number,5,3,'utf8')){
-                    ?>
-
-        <!-- <img src="img/2.gif" class="rounded mx-auto d-block" alt=""> -->
-        <br>
-        <p style="text-align: center;color:red;font-weight:900;">
-
-                <?php
                     echo "<br>號碼=".$number."<br>";
                     $all_res=1;
                     echo "中了增開六獎";
@@ -149,25 +120,9 @@ foreach($invoices as $inv){
 
 
 }
-if($all_res==-1){
-?>
-<img src="img/1.gif" class="rounded mx-auto d-block" alt="">
-    <br>
-    <p style="text-align: center;">
-    <?php
+    if($all_res==-1){
         echo "很可惜，都沒有中";
-    }else{
-    ?>
-
-<img src="img/6.gif" class="rounded mx-auto d-block" alt="">
-<?php
     }
+
 ?>
-</p>
-<br>
-        <div class="text-center">
-        <button class="btn btn-sm btn-primary">
-                <a class="text-light" href="?do=award_numbers">返回</a>
-            </button>
-            </div>
 

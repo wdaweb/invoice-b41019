@@ -1,29 +1,6 @@
 <?php
 include_once "../base.php";
 
-// echo "<pre>";
-
-// print_r($_POST);
-
-// echo "</pre>";
-
-/*$sql="
-update 
-    invoices 
-set 
-    `code`='{$_POST['code']}',
-    `date`='{$_POST['date']}',
-    `payment`='{$_POST['payment']}'
-where 
-    `id`='{$_POST['id']}'";
-
-$pdo->exec($sql);
-// echo $sql;
-header("location:../index.php?do=invoice_list");
-*/
-
-include_once "../base.php";
-
 /* $sql="update 
         invoices 
       set 
@@ -46,5 +23,4 @@ save('invoices',$row);
 //$pdo->exec($sql);
 to("../index.php?do=invoice_list")
 //header("location:../index.php?do=invoice_list");
-?>
 ?>

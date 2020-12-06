@@ -6,7 +6,8 @@ $pdo=new PDO($dsn,'root','');
 date_default_timezone_set("Asia/Taipei");
 session_start();
 
-$awardStr=['頭' ,'二', '三' , '四' , '五' , '六'];
+$awardStr=['頭','二','三','四','五','六'];
+
 
 function accept($field,$meg='此欄位不得為空'){
     if(empty($_POST[$field])){
@@ -18,7 +19,7 @@ function length($field,$min,$max,$meg="長度不足"){
     if(strlen($_POST[$field])>$max || strlen($_POST[$field]) < $min){
         $_SESSION['err'][$field]['len']=$meg;
     }
-
+    
 }
 
 function email($field,$meg='email格式錯誤'){
@@ -63,7 +64,7 @@ function all($table,...$arg){
     $sql="select * from $table ";
 
     if(isset($arg[0])){
-
+    
         if(is_array($arg[0])){
             //製作會在 where 後面的句子字串(陣列格式)
                 foreach($arg[0] as $key => $value){
@@ -71,7 +72,7 @@ function all($table,...$arg){
                 }
 
                 $sql=$sql." where ".implode(' && ',$tmp);
-
+            
         }else{
             //製作非陣列的語句接在$sql後面
                 $sql=$sql.$arg[0];       
@@ -81,7 +82,7 @@ function all($table,...$arg){
     if(isset($arg[1])){
         $sql=$sql.$arg[1];
     }
-    echo $sql."<br>";
+   // echo $sql."<br>";
     return $pdo->query($sql)->fetchAll(); 
 }
 function del($table,$id){
@@ -90,7 +91,7 @@ function del($table,$id){
     if(is_array($id)){
         foreach($id as $key => $value){
             $tmp[]=sprintf("`%s`='%s'",$key,$value);
-
+            
         }
         $sql=$sql.implode(' && ',$tmp);
     }else{
@@ -113,7 +114,7 @@ function update($table,$array){
         //$tmp[]="`".$key."`='".$value."'";
     }
     $sql=$sql.implode(",",$tmp) . " where `id`='{$array['id']}'";
-    echo $sql;
+   // echo $sql;
     $pdo->exec($sql);
 }
 
@@ -141,9 +142,11 @@ function to($url){
     header("location:".$url);
 }
 
+
 function q($sql){
     global $pdo;
  return $pdo->query($sql)->fetchAll();
-}
-?>
 
+}
+
+?>

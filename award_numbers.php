@@ -1,3 +1,4 @@
+<!-- 上面的對獎 -->
 <?php
 include_once "base.php";
 
@@ -38,15 +39,53 @@ foreach($awards as $aw){
 
 ?>
 
-<div class='row justify-content-around' style="list-style-type:none;paddin:0">
-    <li><a href="?do=award_numbers&pd=">1,2月</a></li>
-    <li><a href="?do=award_numbers&pd=">3,4月</a></li>
-    <li><a href="?do=award_numbers&pd=">5,6月</a></li>
-    <li><a href="?do=award_numbers&pd=">7,8月</a></li>
-    <li><a href="?do=award_numbers&pd=">9,10月</a></li>
-    <li><a href="?do=award_numbers&pd=">11,12月</a></li>
+ <div class='row justify-content-around' style="list-style-type:none;paddin:0"> 
 
-</div>
+
+<nav class="nav nav-pills flex-column flex-sm-row" >
+
+  <a class="flex-sm-fill text-sm-center nav-link " href="?do=award_numbers&pd=2020-1">1,2月</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="?do=award_numbers&pd=2020-2">3,4月</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="?do=award_numbers&pd=2020-3">5,6月</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="?do=award_numbers&pd=2020-4">7,8月</a>
+  <a class="flex-sm-fill text-sm-center nav-link " href="?do=award_numbers&pd=2020-5">9,10月</a>
+
+  <a class="flex-sm-fill text-sm-center nav-link " href="?do=award_numbers&pd=2020-6">11,12月</a>
+</nav> 
+
+<!-- <div class="navdiv">
+ <ul class="nav nav-tabs">
+        <li class="nav-item ">
+            <a class="nav-link " href="?do=award_numbers&pd=2020-1">1,2月</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?do=award_numbers&pd=2020-2">3,4月</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?do=award_numbers&pd=2020-3">5,6月</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="?do=award_numbers&pd=2020-4" >7,8月</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="?do=award_numbers&pd=2020-5" >9,10月</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="?do=award_numbers&pd=2020-6" >11,12月</a>
+        </li>
+        </ul>
+</div> -->
+
+
+<!-- <div class='row justify-content-around' style="list-style-type:none;paddin:0">
+    <li><a href="?do=award_numbers&pd=2020-1">1,2月</a></li>
+    <li><a href="?do=award_numbers&pd=2020-2">3,4月</a></li>
+    <li><a href="?do=award_numbers&pd=2020-3">5,6月</a></li>
+    <li><a href="?do=award_numbers&pd=2020-4">7,8月</a></li>
+    <li><a href="?do=award_numbers&pd=2020-5">9,10月</a></li>
+    <li><a href="?do=award_numbers&pd=2020-6 ">11,12月</a></li>
+
+</div> -->
 <table class="table table-bordered table-sm" summary="統一發票中獎號碼單"> 
    <tbody>
     <tr> 
@@ -130,7 +169,7 @@ foreach($awards as $aw){
     </tr>  
    </tbody>
 </table>
-<button class="btn btn-primary mx-auto"> 
-    <a href="?do=all_awards&year=<?=$year;?>" class="text-light">兌獎</a> 
-
+<button class="btn btn-primary mx-auto">
+        <a href="?do=all_awards&year=<?=$year;?>&period=<?=$period;?>" class="text-light">對獎</a>
 </button>
+</div>  

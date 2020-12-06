@@ -2,20 +2,14 @@
 include_once "base.php";
 
 $period=ceil(date("m")/2);
-echo $period; 
-// $sql= "select * from `invoices` where period='$period' order by date desc";
 
-// order by date 由舊到新牌資料(電腦計秒由累積秒數少的排到秒數多的)
-// order by date desc 由心道舊排列(電腦計秒由累積秒數多的排到秒數少的)
+//$sql="select * from `invoices` where period='$period' order by date desc";
+
+//$rows=$pdo->query($sql)->fetchAll();
 $rows=all('invoices',['period'=>$period],' order by date desc');
 
-foreach($rows as $row){
-    // echo $row['code'].$row['number']."<br>";
-}
-
 ?>
-
-<div class='row justify-content-around' style="list-style-type:none;padding:0">
+<div class='row justify-content-around' style="list-style-type:none;paddin:0">
     <li><a href="">1,2月</a></li>
     <li><a href="">3,4月</a></li>
     <li><a href="">5,6月</a></li>
@@ -24,7 +18,7 @@ foreach($rows as $row){
     <li><a href="">11,12月</a></li>
 
 </div>
-<table class="table text-center">
+<table class="table text-center" id="list">
     <tr>
         <td>發票號碼</td>
         <td>消費日期</td>
@@ -32,29 +26,25 @@ foreach($rows as $row){
         <td>操作</td>
     </tr>
     <?php
-    foreach($rows as $row ){
-
+    foreach($rows as $row){
     ?>
     <tr>
         <td><?=$row['code'].$row['number'];?></td>
         <td><?=$row['date'];?></td>
         <td><?=$row['payment'];?></td>
         <td>
-        <button class="btn btn-sm btn-primary"> <a class="text-light" href="?do=edit_invoice&id=<?=$row['id'];?>"> 
-        編輯
-        </a></button>
-        <button class="btn btn-sm btn-danger"><a class="text-light" href="?do=del_invoice&id=<?=$row['id'];?>">
-        刪除
-        </a></button>
-        <button class="btn btn-sm btn-success"><a class="text-light" href="?do=award&id=<?=$row['id'];?>">
-        對獎
-        </a></button>
-
+            <button class="btn btn-sm btn-primary">
+                <a class="text-light" href="?do=edit_invoice&id=<?=$row['id'];?>">編輯</a>
+            </button>
+            <button class="btn btn-sm btn-danger">
+            <a class="text-light" href="?do=del_invoice&id=<?=$row['id'];?>">刪除</a>
+            </button>
+            <button class="btn btn-sm btn-success">
+            <a class="text-light" href="?do=award&id=<?=$row['id'];?>">對獎</a>
+            </button>
         </td>
     </tr>
     <?php
-
-}
+    }
     ?>
-
 </table>
