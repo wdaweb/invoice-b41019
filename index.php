@@ -104,6 +104,9 @@
         .mframe{
             overflow: hidden;
         }
+        .awnu-t{
+            width: 95%;
+        }
 
 
     </style>

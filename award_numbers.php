@@ -86,7 +86,7 @@ foreach($awards as $aw){
     <li><a href="?do=award_numbers&pd=2020-6 ">11,12月</a></li>
 
 </div> -->
-<table class="table table-bordered table-sm" summary="統一發票中獎號碼單"> 
+<table class="table table-bordered table-sm awnu-t" summary="統一發票中獎號碼單"> 
    <tbody>
     <tr> 
      <th id="months">年月份</th> 
