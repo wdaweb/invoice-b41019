@@ -17,7 +17,7 @@ $rows=$pdo->query($sql)->fetchAll();
 
 ?>
 <div class='row justify-content-around' style="list-style-type:none;paddin:0">
-    <li><a href="?do=invoice_list">1,2月</a></li>
+    <li><a href="?do=invoice_list1">1,2月</a></li>
     <li><a href="?do=invoice_list2">3,4月</a></li>
     <li><a href="?do=invoice_list3">5,6月</a></li>
     <li><a href="?do=invoice_list4">7,8月</a></li>
