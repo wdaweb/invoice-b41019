@@ -5,7 +5,7 @@ include_once "base.php";
 
 // $sql="select * from `invoices` where period='$period' order by date desc";
 
-$sql="select * from `invoices` where period='1' order by date desc";
+$sql="select * from `invoices` where period='6' order by date desc";
 
 $rows=$pdo->query($sql)->fetchAll();
 
