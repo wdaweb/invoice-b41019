@@ -1,15 +1,15 @@
 <?php
 include_once "base.php";
 
-$period=ceil(date("m")/2);
+// $period=ceil(date("m")/2);
 
 // $sql="select * from `invoices` where period='$period' order by date desc";
 
-// $sql="select * from `invoices` where period='1' order by date desc";
+$sql="select * from `invoices` where period='6' order by date desc";
 
-// $rows=$pdo->query($sql)->fetchAll();
+$rows=$pdo->query($sql)->fetchAll();
 
-$rows=all('invoices',['period'=>$period],' order by date desc');
+//  $rows=all('invoices',['period'=>$period],' order by date desc');
 
  // $rows=all('invoices','period',' order by date desc');
 //  $rows="select * from invoices where period=' 6'";
@@ -17,7 +17,7 @@ $rows=all('invoices',['period'=>$period],' order by date desc');
 
 ?>
 <div class='row justify-content-around' style="list-style-type:none;paddin:0">
-    <li><a href="?do=invoice_list">1,2月</a></li>
+    <li><a href="?do=invoice_list1">1,2月</a></li>
     <li><a href="?do=invoice_list2">3,4月</a></li>
     <li><a href="?do=invoice_list3">5,6月</a></li>
     <li><a href="?do=invoice_list4">7,8月</a></li>
